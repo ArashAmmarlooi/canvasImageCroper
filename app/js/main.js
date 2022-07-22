@@ -17,7 +17,7 @@ let string;
 // Seprate image loadfunction for getting the image and put it in the canvas
 function imageLoad(editorCanvas) {
   img.onload = function () {
-    imgWidth = img.naturalWidth;
+    imgWidth = img.naturalWidth; // Set the natural width that image has by default .
     imgHeight = img.naturalHeight;
     canvas = editorCanvas;
     ctx = canvas.getContext("2d"); // Set editorCanvas ctx to ctx variable
@@ -46,14 +46,11 @@ function imageLoad(editorCanvas) {
 }
 function filePrint(fileSelector, editorCanvas, callback) {
   fileSelector.onchange = function (e) {
-    console.log(e);
     // alert("you can zoom , scale , and rotate your printing picture and the click submit button");
     // get all selected Files from input
     const files = e.target.files;
-
     for (let i = 0; i < files.length; ++i) {
       file = files[i];
-
       // check if file is valid Image (just a MIME check)
       switch (file.type) {
         case "image/jpeg":
@@ -87,11 +84,9 @@ function sliderZoom(slider) {
   slider.min = 0.01;
   slider.max = 2;
   slider.step = "any";
-  console.log(slider.value, "canvas sliderZoom");
 
   slider.addEventListener("input", (e) => {
     // debugger
-    console.log(e.target.value, "zoom range");
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     const scale = e.target.value;
     ctx.scale(scale, scale);
@@ -106,7 +101,6 @@ function sliderRotate(slider) {
   slider.min = 0.01;
   slider.max = 2;
   slider.step = "any";
-  console.log(slider.value, "canvas sliderROtate");
   slider.addEventListener("input", (e) => {
     // debugger
     currentDegrees += 90;
@@ -152,8 +146,6 @@ function imageData(e) {
   // save image data and canavas scales to strinf for scenario 2
   const data = { image: canvasContents, date: Date.now() };
   string = data.image;
-  console.log(string, "image string");
-
   //json object that keep image data
   let dataObj = {
     canvas: {

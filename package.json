@@ -1,9 +1,11 @@
 {
+  "homepage": "http://arashammarlooi.github.io/canvasImageCroper",
   "name": "application-name",
   "version": "0.0.1",
   "scripts": {
     "start": "webpack serve --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -26,6 +28,7 @@
     "webpack-manifest-plugin": "^5.0.0"
   },
   "dependencies": {
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0"
