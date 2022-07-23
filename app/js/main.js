@@ -5,19 +5,18 @@ let canvasWidth; // Set the width of the canvas
 let canvasHeight; //Set the height of the canvas
 let imgWidth; //Set the weight of the image
 let imgHeight; //Set the height of the image
-let currentDegrees = 0; // initialize first value of degress for the canvas
+let currentDegrees = 0; // initialize first value of degress for the canvas rotation
 let x; // x postion of image in canvas
 let y; // x postion of image in canvas
-let canvas;
+let canvas; // Canvas it
 let file; // image file that get from ffile input
-// String variable for keeping image 64bit data and reload it for scenario 2
-let string;
+let string; // String variable for keeping image 64bit data and reload it for scenario 2
 
 
 // Seprate image loadfunction for getting the image and put it in the canvas
 function imageLoad(editorCanvas) {
   img.onload = function () {
-    imgWidth = img.naturalWidth; // Set the natural width that image has by default .
+    imgWidth = img.naturalWidth;
     imgHeight = img.naturalHeight;
     canvas = editorCanvas;
     ctx = canvas.getContext("2d"); // Set editorCanvas ctx to ctx variable
@@ -49,8 +48,10 @@ function filePrint(fileSelector, editorCanvas, callback) {
     // alert("you can zoom , scale , and rotate your printing picture and the click submit button");
     // get all selected Files from input
     const files = e.target.files;
+
     for (let i = 0; i < files.length; ++i) {
       file = files[i];
+
       // check if file is valid Image (just a MIME check)
       switch (file.type) {
         case "image/jpeg":
@@ -136,7 +137,7 @@ function sliderRotate(slider) {
 }
 
 
-// The function that particulary for getting image data and extract it as jsonObject
+// Function wich particulary for getting image data and extract it as jsonObject
 function imageData(e) {
   e.preventDefault();
   // when sumbit button cliked image data has sent to jsonObject
@@ -146,6 +147,7 @@ function imageData(e) {
   // save image data and canavas scales to strinf for scenario 2
   const data = { image: canvasContents, date: Date.now() };
   string = data.image;
+
   //json object that keep image data
   let dataObj = {
     canvas: {
@@ -160,11 +162,12 @@ function imageData(e) {
       },
     },
   };
+
   alert(JSON.stringify(dataObj));
 }
 
 
-//Function for scenario 2 , in order to review theimage that we load it earlier
+// Function for scenario 2 , in order to review theimage that we load it earlier
 function importFromJson(canvas) {
   let image = new Image();
   image.src = string;
