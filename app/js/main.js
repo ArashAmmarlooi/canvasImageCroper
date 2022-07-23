@@ -20,16 +20,13 @@ function imageLoad(editorCanvas) {
     imgHeight = img.naturalHeight;
     canvas = editorCanvas;
     ctx = canvas.getContext("2d"); // Set editorCanvas ctx to ctx variable
-    canvas.width = 500;
-    canvas.height = 400;
+    canvas.width = 430;
+    canvas.height = 350 
     canvasWidth = canvas.width;
-    //Set aspect ratio for canvas image
-    let aspect = imgWidth / imgHeight;
-    // setCanvas height upon the image aspect ratio
-    canvasHeight = canvasWidth / aspect;
+    canvasHeight = canvas.height;
     x = 0;
     y = 0;
-    sx = 0
+    sx = 0;
     sy = 0;
     //And then draw using the recalculated height of image for destination:
     ctx.drawImage(
@@ -83,23 +80,25 @@ function filePrint(fileSelector, editorCanvas, callback) {
 
 //Function for get value of slider and change the cnvas scale
 function sliderZoom(slider) {
-  // slider.value = 1;
-  slider.min = 0.01;
-  slider.max = 2;
+  slider.value = 0;
+  slider.min = 1;
+  slider.max = 3;
   slider.step = "any";
 
   slider.addEventListener("input", (e) => {
     // debugger
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     const scale = e.target.value;
+    console.log(scale, 'scale')
     ctx.scale(scale, scale);
     ctx.drawImage(
       img,
       0,
       0,
-      imgWidth,
-      imgHeight, // source size
-    ); // destination size    ctx.scale(1 / scale, 1 / scale);
+      canvasWidth,
+      canvasHeight, // source size
+      ); // destination size    
+      ctx.scale(1 / scale, 1 / scale);
   });
 }
 
@@ -183,7 +182,7 @@ function importFromJson(canvas) {
     let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
     canvas.width = img.width * 0.75;
     canvas.height = img.height * 0.75;
-    ctx.drawImage(
+    context.drawImage(
       image,
       0,
       0,

@@ -62,7 +62,7 @@
     display: flex;
     position: relative;
     direction: column;
-    width: 680px;
+    width: 645px;
     height: 92vh;
     z-index: 10;
     border-radius: 16px;
@@ -124,8 +124,8 @@
     }
     .modalBody {
       width: 97%;
-      height: 555px;
-      position: absolute;
+      height: 534px;
+            position: absolute;
       border-radius: 20px;
       background-color: white;
       padding: 10px;
@@ -140,17 +140,18 @@
         height: 350px;
         z-index: 0;
         /* border-radius: 93px; */
-        // .editorCanvas{
-        //   width: 15in;
-        //   height: 10in;
-        // }
+        .editorCanvas{
+          background-color:blue;
+          // width: 15in;
+          // height: 10in;
+        }
         position: relative;
         .cropArea {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: 62%;
-          height: 100%;
+          width: 430px;
+          height: 350px;
           transform: translate(-50%, -50%);
           border: 1px solid rgba(255, 255, 255, 0.5);
           box-sizing: border-box;
