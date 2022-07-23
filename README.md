@@ -11,6 +11,7 @@ The worked that I have done is below please .
 4 - Makesome modals for previewing the image First modal is for croping . I could make roation today or tomorow But I have done the scaling of the canvas.
 5 - Add sliders to get the values and resize image of the canvas to modals.
 6 - Made a second modal for reviewng the saved photo . 
+6 - Set crop area height of canvas based on the aspcet ratio and height of the image canvas . 
 7 - Change main.js content for putting all javascrit project functions in order to add functionalities to the project . And also add index.js for bundle of hole project react js files .
 8 - Add git hub pages config to packge.json and set home page and the link is below 
 https://arashammarlooi.github.io/canvasImageCroper/

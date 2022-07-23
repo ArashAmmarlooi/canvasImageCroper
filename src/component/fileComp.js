@@ -25,7 +25,10 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
 
   useEffect(() => {
     fileSelector = document.getElementById("fileSelector");
-    filePrint(fileSelector, childRef.current, setModal);
+    let cropCont = document.getElementById("CropContainer")
+    let cropArea = document.getElementById("cropArea")
+
+    filePrint(fileSelector, childRef.current, setModal, cropCont, cropArea);
   }, [fileSelector, childRef]);
 
   useEffect(() => {

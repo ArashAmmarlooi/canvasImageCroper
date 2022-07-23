@@ -20,9 +20,9 @@ const Filecomp = React.forwardRef((props, ref) => {
             <span onClick={closeMod}>x</span>
           </div>
           <div className={styles.modalBody}>
-            <div className={styles.imageCropContainer}>
+            <div className={styles.imageCropContainer} id ="CropContainer">
               <canvas id="editorCanvas" className={styles.editorCanvas} ref={ref}></canvas>
-              <div className={styles.cropArea}></div>
+              <div className={styles.cropArea} id="cropArea"></div>
             </div>
             <span className={styles.sliderSpan}>
               <label>zoom</label>

@@ -3,8 +3,7 @@ let img; //Image itself that represnts in canvas
 let imgData; // The image data that we must use in json Object
 let canvasWidth; // Set the width of the canvas
 let canvasHeight; //Set the height of the canvas
-let imgWidth; //Set the weight of the image
-let imgHeight; //Set the height of the image
+let imgWidth, imgHeight; //Set the weight and height of the image
 let currentDegrees = 0; // initialize first value of degress for the canvas rotation
 let x, y; // x and y postion of image in canvas
 let sx, sy, sw, sh; // Canvas source destination and widh and hieght
@@ -12,18 +11,25 @@ let canvas; // Canvas it
 let file; // image file that get from ffile input
 let string; // String variable for keeping image 64bit data and reload it for scenario 2
 
-
 // Seprate image loadfunction for getting the image and put it in the canvas
-function imageLoad(editorCanvas) {
+function imageLoad(editorCanvas, cropCont) {
   img.onload = function () {
+    canvas = editorCanvas;
     imgWidth = img.naturalWidth;
     imgHeight = img.naturalHeight;
-    canvas = editorCanvas;
     ctx = canvas.getContext("2d"); // Set editorCanvas ctx to ctx variable
-    canvas.width = 430;
-    canvas.height = 350 
+
+    //set aspect ratio of canvas upon image size
+    const aspectRatio = imgWidth / imgHeight;
+    canvas.width = 380;
+    canvas.height = canvas.width / aspectRatio;
+
     canvasWidth = canvas.width;
     canvasHeight = canvas.height;
+    // setting crop containaer and crop rea by aspect ratio of the image and canvas
+    cropCont.style.height = `${canvasHeight}px`
+    cropArea.style.height = `${canvasHeight}px`
+
     x = 0;
     y = 0;
     sx = 0;
@@ -42,7 +48,7 @@ function imageLoad(editorCanvas) {
     ); // destination size
   };
 }
-function filePrint(fileSelector, editorCanvas, callback) {
+function filePrint(fileSelector, editorCanvas, callback, cropCont , cropArea) {
   fileSelector.onchange = function (e) {
     // alert("you can zoom , scale , and rotate your printing picture and the click submit button");
     // get all selected Files from input
@@ -62,8 +68,8 @@ function filePrint(fileSelector, editorCanvas, callback) {
             // create HTMLImageElement holding image data
             img = new Image();
             img.src = reader.result;
-            // Call the image load function the we declare it earlier 
-            imageLoad(editorCanvas); 
+            // Call the image load function the we declare it earlier
+            imageLoad(editorCanvas, cropCont, cropArea);
           };
           reader.readAsDataURL(file);
           // process just one file.
@@ -89,16 +95,16 @@ function sliderZoom(slider) {
     // debugger
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     const scale = e.target.value;
-    console.log(scale, 'scale')
+    console.log(scale, "scale");
     ctx.scale(scale, scale);
     ctx.drawImage(
       img,
       0,
       0,
       canvasWidth,
-      canvasHeight, // source size
-      ); // destination size    
-      ctx.scale(1 / scale, 1 / scale);
+      canvasHeight // source size
+    ); // destination size
+    ctx.scale(1 / scale, 1 / scale);
   });
 }
 
@@ -142,7 +148,6 @@ function sliderRotate(slider) {
   });
 }
 
-
 // Function wich particulary for getting image data and extract it as jsonObject
 function imageData(e) {
   e.preventDefault();
@@ -172,7 +177,6 @@ function imageData(e) {
   alert(JSON.stringify(dataObj));
 }
 
-
 // Function for scenario 2 , in order to review theimage that we load it earlier
 function importFromJson(canvas) {
   let image = new Image();
@@ -182,16 +186,16 @@ function importFromJson(canvas) {
     let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
     canvas.width = img.width * 0.75;
     canvas.height = img.height * 0.75;
-    ctx.drawImage(
+    context.drawImage(
       image,
-      0,
-      0,
+      sx,
+      sy,
       imgWidth,
       imgHeight, // source size
-      0,
-      0,
-      canvasWidth,
-      canvasHeight
+      x,
+      y,
+      canvas.width,
+      canvas.height
     ); // destination size
   };
 }
