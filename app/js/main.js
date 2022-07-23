@@ -6,8 +6,8 @@ let canvasHeight; //Set the height of the canvas
 let imgWidth; //Set the weight of the image
 let imgHeight; //Set the height of the image
 let currentDegrees = 0; // initialize first value of degress for the canvas rotation
-let x; // x postion of image in canvas
-let y; // x postion of image in canvas
+let x, y; // x and y postion of image in canvas
+let sx, sy, sw, sh; // Canvas source destination and widh and hieght
 let canvas; // Canvas it
 let file; // image file that get from ffile input
 let string; // String variable for keeping image 64bit data and reload it for scenario 2
@@ -29,15 +29,17 @@ function imageLoad(editorCanvas) {
     canvasHeight = canvasWidth / aspect;
     x = 0;
     y = 0;
+    sx = 0
+    sy = 0;
     //And then draw using the recalculated height of image for destination:
     ctx.drawImage(
       img,
-      0,
-      0,
+      sx,
+      sy,
       imgWidth,
       imgHeight, // source size
-      0,
-      0,
+      x,
+      y,
       canvasWidth,
       canvasHeight
     ); // destination size
@@ -91,8 +93,13 @@ function sliderZoom(slider) {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     const scale = e.target.value;
     ctx.scale(scale, scale);
-    ctx.drawImage(img, 0, 0, canvasWidth, canvasHeight);
-    ctx.scale(1 / scale, 1 / scale);
+    ctx.drawImage(
+      img,
+      0,
+      0,
+      imgWidth,
+      imgHeight, // source size
+    ); // destination size    ctx.scale(1 / scale, 1 / scale);
   });
 }
 
@@ -157,8 +164,8 @@ function imageData(e) {
         id: file.name,
         width: imgWidth,
         height: imgHeight,
-        x: 0,
-        y: 0,
+        x: x,
+        y: y,
       },
     },
   };
@@ -176,12 +183,16 @@ function importFromJson(canvas) {
     let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
     canvas.width = img.width * 0.75;
     canvas.height = img.height * 0.75;
-    context.drawImage(
+    ctx.drawImage(
       image,
       0,
       0,
-      canvas.width,
-      canvas.height
+      imgWidth,
+      imgHeight, // source size
+      0,
+      0,
+      canvasWidth,
+      canvasHeight
     ); // destination size
   };
 }
