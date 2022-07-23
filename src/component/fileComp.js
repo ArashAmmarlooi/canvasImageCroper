@@ -2,8 +2,6 @@ import React, { Component, useEffect, useState, useRef } from "react";
 import {
   filePrint,
   sliderZoom,
-  sliderRotate,
-  importFromJson,
 } from "../../app/js/main.js";
 import Modalcomp from "./modalComp.js";
 import Prewcomp from "./prewComp.js";
@@ -35,7 +33,6 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
     let zoomSlide = document.getElementById("zoom-slider");
     let rotateSlide = document.getElementById("rotate-slider");
     sliderZoom(zoomSlide);
-    sliderRotate(rotateSlide);
   }, [isModal]);
 
   return (

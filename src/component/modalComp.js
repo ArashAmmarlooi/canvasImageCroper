@@ -27,8 +27,6 @@ const Filecomp = React.forwardRef((props, ref) => {
             <span className={styles.sliderSpan}>
               <label>zoom</label>
               <input id="zoom-slider" type="range"></input>
-              <label>rotate</label>
-              <input id="rotate-slider" type="range"></input>
             </span>
           </div>
           <div className={styles.modalFooter}>

@@ -27,8 +27,8 @@ function imageLoad(editorCanvas, cropCont) {
     canvasWidth = canvas.width;
     canvasHeight = canvas.height;
     // setting crop containaer and crop rea by aspect ratio of the image and canvas
-    cropCont.style.height = `${canvasHeight}px`
-    cropArea.style.height = `${canvasHeight}px`
+    cropCont.style.height = `${canvasHeight}px`;
+    cropArea.style.height = `${canvasHeight}px`;
 
     x = 0;
     y = 0;
@@ -48,7 +48,7 @@ function imageLoad(editorCanvas, cropCont) {
     ); // destination size
   };
 }
-function filePrint(fileSelector, editorCanvas, callback, cropCont , cropArea) {
+function filePrint(fileSelector, editorCanvas, callback, cropCont, cropArea) {
   fileSelector.onchange = function (e) {
     // alert("you can zoom , scale , and rotate your printing picture and the click submit button");
     // get all selected Files from input
@@ -108,46 +108,6 @@ function sliderZoom(slider) {
   });
 }
 
-//Function for get value of slider and change the canvas Degrees
-function sliderRotate(slider) {
-  // slider.value = 1;
-  slider.min = 0.01;
-  slider.max = 2;
-  slider.step = "any";
-  slider.addEventListener("input", (e) => {
-    // debugger
-    currentDegrees += 90;
-    if (currentDegrees >= 360) currentDegrees = 0;
-
-    if (currentDegrees === 0 || currentDegrees === 180) {
-      canvas.width = canvasWidth;
-      canvas.height = canvasHeight;
-    } else {
-      // swap
-      canvas.width = canvasHeight;
-      canvas.height = canvasWidth;
-    }
-    ctx.clearRect(0, 0, canvasWidth, canvasWidth);
-    // save the unrotated ctx of the canvas so we can restore it later
-    // the alternative is to untranslate & unrotate after drawing
-    ctx.save();
-    // you want to rotate around center of canvas
-    ctx.translate(canvasWidth / 2, canvasHeight / 2);
-    ctx.rotate((currentDegrees * Math.PI) / 180);
-    // draw the image
-    // since the ctx is rotated, the image will be rotated also
-    ctx.drawImage(
-      img,
-      -canvasWidth * 0.5,
-      -canvasHeight * 0.5,
-      canvasWidth,
-      canvasHeight
-    );
-    // we’re done with the rotating so restore the unrotated ctx
-    ctx.restore();
-  });
-}
-
 // Function wich particulary for getting image data and extract it as jsonObject
 function imageData(e) {
   e.preventDefault();
@@ -184,20 +144,14 @@ function importFromJson(canvas) {
 
   image.onload = function () {
     let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
-    canvas.width = 380
-    canvas.height = img.height
-    context.drawImage(
-      image,
-      sx,
-      sy,
-      imgWidth,
-      imgHeight, // source size
-      x,
-      y,
-      canvas.height,
-      canvasHeight  
-    ); // destination size
+    const aspectRatio = imgWidth / imgHeight;
+    canvas.width = 380;
+    canvas.height = canvas.width / aspectRatio;
+
+    canvasWidth = canvas.width;
+    canvasHeight = canvas.height;
+    context.drawImage(image, x, y); // destination size
   };
 }
 
-export { filePrint, sliderZoom, imageData, sliderRotate, importFromJson };
+export { filePrint, sliderZoom, imageData, importFromJson };

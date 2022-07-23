@@ -4,7 +4,7 @@
   /* height: 100vh; */
   border-radius: 10px;
   top: 30px;
-  left: -75px;
+  left: -30px;
   position: absolute;
   justify-content: center;
   align-items: center;
@@ -71,23 +71,22 @@
       text-align: center;
       canvas {
       }
-      }
-    }
-
-    .modalFooter {
-      position: absolute;
-      z-index: 20;
-      bottom: 0;
-      width: 100%;
-      border-bottom-right-radius: 20px;
-      border-bottom-left-radius: 20px;
-      height: 55px;
-      background-color: rgb(228, 228, 228);
-      display: flex;
-      justify-content: center;
     }
   }
 
+  .modalFooter {
+    position: absolute;
+    z-index: 20;
+    bottom: 0;
+    width: 100%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 55px;
+    background-color: rgb(228, 228, 228);
+    display: flex;
+    justify-content: center;
+  }
+}
 
 .modalDisable {
   display: none;
@@ -104,35 +103,32 @@
   position: absolute;
 }
 
+.importDiv {
+  display: flex;
+  flex-direction: column;
+  line-height: 60px;
 
-.importDiv{
-    display: flex;
-    flex-direction: column;
-    line-height: 60px;
-
-    button{
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 62px;
-        box-sizing: border-box;
-        background: #492de5;
-        padding: 0px 99px;
-        border: none;
-        font-weight: 600;
-        font-size: 20px;
-        color: #fff;
-        transition: all 0.1s linear;
-        border-radius: 8px;
-        box-shadow: 0 3px 6px 0rgba 0, 0, 0, 0.14;
-        order: 1;
-        max-width: 60vw;
-        cursor: pointer;
-        &:hover {
-            background: #664eec;
-
-        }
+  button {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 62px;
+    box-sizing: border-box;
+    background: #492de5;
+    padding: 0px 99px;
+    border: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.1s linear;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px 0rgba 0, 0, 0, 0.14;
+    order: 1;
+    max-width: 60vw;
+    cursor: pointer;
+    &:hover {
+      background: #664eec;
     }
-    
+  }
 }
