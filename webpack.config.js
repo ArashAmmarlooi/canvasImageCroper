@@ -25,7 +25,7 @@ module.exports = {
     historyApiFallback: true, // Handle history api when routes changed . 
     open: true,
     port: 8090,
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "src"),
   },
   resolve: {
     extensions: ["*", ".js", ".jsx"], // Adding jsx extesion 
