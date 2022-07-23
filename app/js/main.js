@@ -182,7 +182,7 @@ function importFromJson(canvas) {
     let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
     canvas.width = img.width * 0.75;
     canvas.height = img.height * 0.75;
-    context.drawImage(
+    ctx.drawImage(
       image,
       0,
       0,
