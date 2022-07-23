@@ -10,14 +10,43 @@
   .inputDiv {
     display: flex;
     line-height: 32px;
+    gap: 50px;
+    .inputCont {
+      display: flex;
+      flex-direction: column;
+      line-height: 60px;
+      p{
+        margin: 0;
+      }
+    }
     .selectorDiv {
-      display: flex;
-      flex-direction: column;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      align-items: center;
+      width: 200px;
+      justify-content: center;
+      min-height: 62px;
+      box-sizing: border-box;
+      background: #492de5;
+      padding: 0px 99px;
+      font-weight: 600;
+      font-size: 20px;
+      color: #fff;
+      transition: all 0.1s linear;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px 0rgba 0, 0, 0, 0.14;
+      order: 1;
+      max-width: 60vw;
+      cursor: pointer;
+      &:hover {
+          background: #664eec;
+
+      }
+      input[type="file"] {
+        display: none;
+      }
     }
-    .importDiv {
-      display: flex;
-      flex-direction: column;
-    }
+
   }
 }
 
@@ -49,7 +78,7 @@
       height: 40px;
       margin-block: auto;
       border-radius: 8px;
-      cursor:pointer;
+      cursor: pointer;
       &:hover {
         background-color: rgb(66, 66, 248);
         transition: all 0.5s ease;

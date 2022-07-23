@@ -24,11 +24,12 @@ const Prewcomp = ({ fileSelector, editorCanvas }) => {
 
   return (
     <div>
-      <label for="fileSelector">view the image from prevoiuses selection</label>
-      <button onClick={previewImg} style={{ width: "20%" }} id="fileImport">
-        preview
-      </button>
-
+      <div className={styles.importDiv}>
+        <label for="fileSelector">view the image that selectet</label>
+        <button onClick={previewImg} style={{ width: "20%" }} id="fileImport">
+          preview
+        </button>
+      </div>
       <div className={modalToggle}>
         <div className={styles.modalContent}>
           <div className={styles.modalHeader}>

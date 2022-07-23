@@ -1,5 +1,10 @@
 import React, { Component, useEffect, useState, useRef } from "react";
-import { filePrint, sliderZoom, sliderRotate, importFromJson } from "../../app/js/main.js";
+import {
+  filePrint,
+  sliderZoom,
+  sliderRotate,
+  importFromJson,
+} from "../../app/js/main.js";
 import Modalcomp from "./modalComp.js";
 import Prewcomp from "./prewComp.js";
 import styles from "../../app/css/__modalComp.scss";
@@ -14,7 +19,7 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
     setIsModal((value) => !value);
   }
 
-  function closeModal(){
+  function closeModal() {
     setIsModal((value) => !value);
   }
 
@@ -35,17 +40,24 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
       <div className={styles.header}>
         <h1>Photo printing application</h1>
         <div className={styles.inputDiv}>
-          <div className={styles.selectorDiv}>
-            <label for="fileSelector">Select an Image file from device</label>
-            <input type="file" id="fileSelector" />
+          <div className={styles.inputCont}>
+            <p>Import image from your device</p>
+            <div className={styles.selectorDiv}>
+              <label for="fileSelector">upload</label>
+              <input type="file" id="fileSelector" />
+            </div>
           </div>
 
           <div className={styles.importDiv}>
-          <Prewcomp />
+            <Prewcomp />
           </div>
         </div>
       </div>
-      <Modalcomp ref={childRef} modalToggle={modalToggle} closeModal={closeModal}/>
+      <Modalcomp
+        ref={childRef}
+        modalToggle={modalToggle}
+        closeModal={closeModal}
+      />
     </div>
   );
 };
