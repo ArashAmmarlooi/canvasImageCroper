@@ -183,10 +183,10 @@ function importFromJson(canvas) {
   image.src = string;
 
   image.onload = function () {
-    // let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
-    // canvas.width = img.width
-    // canvas.height = img.height
-    ctx.drawImage(
+    let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
+    canvas.width = 380
+    canvas.height = img.height
+    context.drawImage(
       image,
       sx,
       sy,
@@ -194,7 +194,7 @@ function importFromJson(canvas) {
       imgHeight, // source size
       x,
       y,
-      canvasWidth,
+      canvas.height,
       canvasHeight  
     ); // destination size
   };
