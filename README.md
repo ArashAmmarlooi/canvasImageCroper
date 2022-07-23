@@ -17,7 +17,7 @@ The worked that I have done is below please .
 https://arashammarlooi.github.io/canvasImageCroper/
 (Just desktop version)
 
-10 - I didn`t style the project for mobile responsive design but in complete project I will do the responsive config completly my self . In this project I just wanted to show you how i code . 
+10 - I didn`t style the project for mobile responsive design but in complete project I will do the responsive config completly my self . In this project I just wanted to show you how is my approaches . 
 
 NOTICE : Unfortunately I had two busy days since Monday and I started the project on Wednesday  , but Due to lack of time I wanted to send the project before holiday (Saturday , Sunday). I have wrote as many code as I could but if I had more time I would add tests and other methods. 
 If I cooperate with the team I would learn the exact adjustment of canvas and go with the rules  of Albeli company ( I know the canvas ,  frontend and backend methods very well ) but now actually I don`t know the specific units and positions of the canvases and images and print rules in Albeli but I wanted to show point with my sample project . And also I will learn and cooperate qiuckly with the team . 
