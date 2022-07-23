@@ -21,7 +21,7 @@ function imageLoad(editorCanvas, cropCont) {
 
     //set aspect ratio of canvas upon image size
     const aspectRatio = imgWidth / imgHeight;
-    canvas.width = 380;
+    canvas.width = 300;
     canvas.height = canvas.width / aspectRatio;
 
     canvasWidth = canvas.width;
@@ -194,8 +194,8 @@ function importFromJson(canvas) {
       imgHeight, // source size
       x,
       y,
-      canvas.width,
-      canvas.height
+      canvasWidth,
+      canvasHeight  
     ); // destination size
   };
 }
