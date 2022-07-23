@@ -38,7 +38,7 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
   return (
     <div>
       <div className={styles.header}>
-        <h1>Photo printing application</h1>
+        <h1 style={{marginLeft: '30px'}}>Photo printing application</h1>
         <div className={styles.inputDiv}>
           <div className={styles.inputCont}>
             <p>Import image from your device</p>
