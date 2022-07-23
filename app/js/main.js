@@ -21,7 +21,7 @@ function imageLoad(editorCanvas, cropCont) {
 
     //set aspect ratio of canvas upon image size
     const aspectRatio = imgWidth / imgHeight;
-    canvas.width = 300;
+    canvas.width = 380;
     canvas.height = canvas.width / aspectRatio;
 
     canvasWidth = canvas.width;
@@ -183,10 +183,10 @@ function importFromJson(canvas) {
   image.src = string;
 
   image.onload = function () {
-    let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
-    canvas.width = img.width * 0.75;
-    canvas.height = img.height * 0.75;
-    context.drawImage(
+    // let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
+    // canvas.width = img.width
+    // canvas.height = img.height
+    ctx.drawImage(
       image,
       sx,
       sy,
