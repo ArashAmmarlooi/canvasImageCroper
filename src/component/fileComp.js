@@ -1,14 +1,14 @@
 import React, { Component, useEffect, useState, useRef } from "react";
-import {
-  filePrint,
-  sliderZoom,
-} from "../../app/js/main.js";
+import { filePrint, sliderZoom } from "../../app/js/main.js";
 import Modalcomp from "./modalComp.js";
 import Prewcomp from "./prewComp.js";
 import styles from "../../app/css/__modalComp.scss";
 
 const Filecomp = ({ fileSelector, editorCanvas }) => {
   const [isModal, setIsModal] = useState(false);
+  // An object that keeps html elements data to pass to the filerint function
+  let obj ={}
+
   const modalToggle = isModal ? styles.modalBlock : styles.modalDisable;
   // const modalToggle = styles.modalBlock;
   const childRef = React.useRef();
@@ -23,9 +23,13 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
 
   useEffect(() => {
     fileSelector = document.getElementById("fileSelector");
-    let cropCont = document.getElementById("CropContainer")
-    let cropArea = document.getElementById("cropArea")
-    filePrint(fileSelector, childRef.current, setModal, cropCont, cropArea);
+    let cropCont = document.getElementById("CropContainer");
+    let cropArea = document.getElementById("cropArea");
+    let modalCont = document.getElementById("modalContent");
+    obj.cropCont = cropCont,
+    obj.cropArea = cropArea,
+    obj.modalCont = modalCont,
+    filePrint(fileSelector, childRef.current, setModal, obj);
   }, [fileSelector, childRef]);
 
   useEffect(() => {
@@ -36,7 +40,7 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
   return (
     <div>
       <div className={styles.header}>
-        <h1 style={{marginLeft: '30px'}}>Photo printing application</h1>
+        <h1 style={{ marginLeft: "30px" }}>Photo printing application</h1>
         <div className={styles.inputDiv}>
           <div className={styles.inputCont}>
             <p>Import image from your device</p>

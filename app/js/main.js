@@ -4,7 +4,6 @@ let imgData; // The image data that we must use in json Object
 let canvasWidth; // Set the width of the canvas
 let canvasHeight; //Set the height of the canvas
 let imgWidth, imgHeight; //Set the weight and height of the image
-let currentDegrees = 0; // initialize first value of degress for the canvas rotation
 let x, y; // x and y postion of image in canvas
 let sx, sy, sw, sh; // Canvas source destination and widh and hieght
 let canvas; // Canvas it self
@@ -12,8 +11,9 @@ let file; // image file that get from ffile input
 let string; // String variable for keeping image 64bit data and reload it for scenario 2
 
 // Seprate image loadfunction for getting the image and put it in the canvas
-function imageLoad(editorCanvas, cropCont) {
+function imageLoad(editorCanvas, cropCont, modalCont) {
   img.onload = function () {
+    console.log(modalCont);
     canvas = editorCanvas;
     imgWidth = img.naturalWidth;
     imgHeight = img.naturalHeight;
@@ -29,6 +29,9 @@ function imageLoad(editorCanvas, cropCont) {
     // setting crop containaer and crop rea by aspect ratio of the image and canvas
     cropCont.style.height = `${canvasHeight}px`;
     cropArea.style.height = `${canvasHeight}px`;
+    console.log(modalCont);
+
+    if(imgWidth > imgHeight )  
 
     x = 0;
     y = 0;
@@ -48,8 +51,9 @@ function imageLoad(editorCanvas, cropCont) {
     ); // destination size
   };
 }
-function filePrint(fileSelector, editorCanvas, callback, cropCont, cropArea) {
+function filePrint(fileSelector, editorCanvas, callback, {cropCont, cropArea, modalCont }) {
   fileSelector.onchange = function (e) {
+    console.log(cropCont, cropArea, modalCont);
     // alert("you can zoom , scale , and rotate your printing picture and the click submit button");
     // get all selected Files from input
     const files = e.target.files;
@@ -69,7 +73,7 @@ function filePrint(fileSelector, editorCanvas, callback, cropCont, cropArea) {
             img = new Image();
             img.src = reader.result;
             // Call the image load function the we declare it earlier
-            imageLoad(editorCanvas, cropCont, cropArea);
+            imageLoad(editorCanvas, cropCont, cropArea, modalCont);
           };
           reader.readAsDataURL(file);
           // process just one file.
@@ -168,7 +172,7 @@ function importFromJson(canvasSec) {
 
     canvasWidth = canvasSec.width;
     canvasHeight = canvasSec.height;
-    context.drawImage(image, 40, 10); // destination size
+    context.drawImage(image, x, y); // destination size
   };
 }
 
