@@ -99,10 +99,8 @@ function sliderZoom(slider) {
   slider.step = "any";
 
   slider.addEventListener("input", (e) => {
-    // debugger
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     const scale = e.target.value;
-    console.log(scale, "scale");
     ctx.scale(scale, scale);
     ctx.drawImage(img, x, y, canvasWidth, canvasHeight); // destination size
     ctx.scale(1 / scale, 1 / scale);
@@ -170,7 +168,7 @@ function importFromJson(canvasSec) {
 
     canvasWidth = canvasSec.width;
     canvasHeight = canvasSec.height;
-    context.drawImage(image, x, y); // destination size
+    context.drawImage(image, 40, 10); // destination size
   };
 }
 

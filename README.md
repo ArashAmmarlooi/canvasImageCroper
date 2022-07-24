@@ -13,11 +13,13 @@ The worked that I have done is below please .
 6 - Made a second modal for reviewng the saved photo . 
 7 - Set crop area height of canvas based on the aspcet ratio and height of the image canvas . 
 8 - Change main.js content for putting all javascrit project functions in order to add functionalities to the project . And also add index.js for bundle of hole project react js files .
-9 - Add git hub pages config to packge.json and set home page and the link is below 
+9 - make changePos function which gets onClick event and call change Pos function to increase or decrease x positions of the image.
+NOTICE : I could change position of y or maybe change postion of the image with mouse movement but for the lack of I just handle with clicks and x position . 
+10 - Add git hub pages config to packge.json and set home page and the link is below 
 https://arashammarlooi.github.io/canvasImageCroper/
 (Just desktop version)
 
-10 - I didn`t style the project for mobile responsive design but in complete project I will do the responsive config completly my self . In this project I just wanted to show you how is my approaches . 
+11 - I didn`t style the project for mobile responsive design but in complete project I will do the responsive config completly my self . In this project I just wanted to show you how is my approaches . 
 
 NOTICE : Unfortunately I had two busy days since Monday and I started the project on Wednesday  , but Due to lack of time I wanted to send the project before holiday (Saturday , Sunday). I have wrote as many code as I could but if I had more time I would add tests and other methods. 
 If I cooperate with the team I would learn the exact adjustment of canvas and go with the rules  of Albeli company ( I know the canvas ,  frontend and backend methods very well ) but now actually I don`t know the specific units and positions of the canvases and images and print rules in Albeli but I wanted to show point with my sample project . And also I will learn and cooperate qiuckly with the team . 
