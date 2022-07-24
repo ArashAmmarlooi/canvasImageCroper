@@ -1,7 +1,9 @@
+$width : 530px;
+$height : 520px;
 .modalBlock {
   display: flex;
-  width: 530px;
-  height: 500px;
+  width: $width;
+  height: $height;
   border-radius: 10px;
   top: 30px;
   left: -30px;
@@ -14,8 +16,8 @@
     display: flex;
     position: relative;
     direction: column;
-    width: 530px;
-    height: 500px;
+    width: $width;
+    height: $height;
     z-index: 10;
     border-radius: 16px;
 
@@ -61,8 +63,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 530px;
-      height: 500px;
+      width: $width;
+      height: $height;
       position: absolute;
       border-radius: 20px;
       background-color: white;
