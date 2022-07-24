@@ -13,7 +13,7 @@ const fileObject = {
 const App = () => {
   return (
     <>
-      <div className={styles.darkBG} />
+      {/* <div className={styles.darkBG} /> */}
       <Filecomp fileObject={fileObject} />
     </>
   );

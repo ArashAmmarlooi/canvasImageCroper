@@ -11,7 +11,6 @@ const Filecomp = React.forwardRef((props, ref) => {
     props.closeModal();
   }
 
-
   return (
     <>
       <div className={props.modalToggle}>
@@ -32,12 +31,13 @@ const Filecomp = React.forwardRef((props, ref) => {
                 src={Arrowleft}
                 className={styles.arrowLeft}
               />
-              <div className={styles.cropArea} id="cropArea" />
-              <canvas
-                id="editorCanvas"
-                className={styles.editorCanvas}
-                ref={ref}
-              ></canvas>
+              <div className={styles.cropArea} id="cropArea">
+                <canvas
+                  id="editorCanvas"
+                  className={styles.editorCanvas}
+                  ref={ref}
+                ></canvas>
+              </div>
             </div>
             <span className={styles.sliderSpan}>
               <label>zoom</label>

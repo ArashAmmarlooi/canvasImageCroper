@@ -27,11 +27,11 @@ function imageLoad(editorCanvas, cropCont, modalCont) {
     canvasWidth = canvas.width;
     canvasHeight = canvas.height;
     // setting crop containaer and crop rea by aspect ratio of the image and canvas
-    cropCont.style.height = `${canvasHeight}px`;
-    cropArea.style.height = `${canvasHeight}px`;
-    console.log(modalCont);
+    // cropCont.style.height = `${canvasHeight}px`;
+    // cropArea.style.height = `${canvasHeight}px`;
+    // console.log(modalCont);
 
-    if(imgWidth > imgHeight )  
+    // if(imgWidth > imgHeight )  
 
     x = 0;
     y = 0;
