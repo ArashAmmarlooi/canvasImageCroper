@@ -26,9 +26,14 @@ function imageLoad(editorCanvas, cropCont, modalCont) {
 
     canvasWidth = canvas.width;
     canvasHeight = canvas.height;
-    // setting crop containaer and crop rea by aspect ratio of the image and canvas
     // cropCont.style.height = `${canvasHeight}px`;
-    // cropArea.style.height = `${canvasHeight}px`;
+    // setting crop containaer and crop area by aspect ratio of the image and canvas
+    if (imgWidth > imgHeight) {
+      cropArea.style.width = "71%";
+    } else {
+      cropArea.style.width = "51%";
+    }
+
     // console.log(modalCont);
 
     // if(imgWidth > imgHeight )  
