@@ -13,7 +13,6 @@ let string; // String variable for keeping image 64bit data and reload it for sc
 // Seprate image loadfunction for getting the image and put it in the canvas
 function imageLoad(editorCanvas, cropCont, modalCont) {
   img.onload = function () {
-    console.log(modalCont);
     canvas = editorCanvas;
     imgWidth = img.naturalWidth;
     imgHeight = img.naturalHeight;
@@ -26,22 +25,19 @@ function imageLoad(editorCanvas, cropCont, modalCont) {
 
     canvasWidth = canvas.width;
     canvasHeight = canvas.height;
-    // cropCont.style.height = `${canvasHeight}px`;
-    // setting crop containaer and crop area by aspect ratio of the image and canvas
+
+    // setting crop area by aspect ratio of the image and canvas
     if (imgWidth > imgHeight) {
       cropArea.style.width = "71%";
     } else {
       cropArea.style.width = "51%";
     }
 
-    // console.log(modalCont);
-
-    // if(imgWidth > imgHeight )  
-
     x = 0;
     y = 0;
     sx = 0;
     sy = 0;
+
     //And then draw using the recalculated height of image for destination:
     ctx.drawImage(
       img,
@@ -58,14 +54,11 @@ function imageLoad(editorCanvas, cropCont, modalCont) {
 }
 function filePrint(fileSelector, editorCanvas, callback, {cropCont, cropArea, modalCont }) {
   fileSelector.onchange = function (e) {
-    console.log(cropCont, cropArea, modalCont);
     // alert("you can zoom , scale , and rotate your printing picture and the click submit button");
     // get all selected Files from input
     const files = e.target.files;
-
     for (let i = 0; i < files.length; ++i) {
       file = files[i];
-
       // check if file is valid Image (just a MIME check)
       switch (file.type) {
         case "image/jpeg":
@@ -134,7 +127,7 @@ function sliderZoom(slider) {
 //   }, false);
 // }
 
-// Function wich particulary for getting image data and extract it as jsonObject
+// Function which particulary for getting image data and extract it as jsonObject
 function imageData(e) {
   e.preventDefault();
   // Get image data if necessary

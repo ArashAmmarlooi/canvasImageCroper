@@ -21,6 +21,7 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
     setIsModal((value) => !value);
   };
 
+  // Pass element as parametrs to set Element function to fill the the object
   function setElements(cropCont, cropArea, modalCont) {
     obj.cropCont = cropCont,
     obj.cropArea = cropArea,
