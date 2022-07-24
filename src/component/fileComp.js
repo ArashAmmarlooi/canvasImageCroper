@@ -15,20 +15,24 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
 
   function setModal() {
     setIsModal((value) => !value);
-  }
+  };
 
   function closeModal() {
     setIsModal((value) => !value);
-  }
+  };
+
+  function setElements(cropCont, cropArea, modalCont) {
+    obj.cropCont = cropCont,
+    obj.cropArea = cropArea,
+    obj.modalCont = modalCont
+  };
 
   useEffect(() => {
     fileSelector = document.getElementById("fileSelector");
     let cropCont = document.getElementById("CropContainer");
     let cropArea = document.getElementById("cropArea");
     let modalCont = document.getElementById("modalContent");
-    obj.cropCont = cropCont,
-    obj.cropArea = cropArea,
-    obj.modalCont = modalCont,
+    setElements(cropCont, cropArea, modalCont);
     filePrint(fileSelector, childRef.current, setModal, obj);
   }, [fileSelector, childRef]);
 
