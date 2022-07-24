@@ -18,8 +18,8 @@ function imageLoad(editorCanvas, cropCont, modalCont) {
     imgHeight = img.naturalHeight;
     ctx = canvas.getContext("2d"); // Set editorCanvas ctx to ctx variable
 
-    //set aspect ratio of canvas upon image size
     canvas.width = 380;
+    //set aspect ratio of and height of the canvas upon image size . 
     const aspectRatio = imgWidth / imgHeight;
     canvas.height = canvas.width / aspectRatio;
 
