@@ -1,5 +1,5 @@
 import React, { Component, useEffect, forwardRef } from "react";
-import { filePrint, sliderZoom, imageData } from "../../app/js/main.js";
+import { imageData , canvasPos} from "../../app/js/main.js";
 import styles from "../../app/css/__modalComp.scss";
 
 const Filecomp = React.forwardRef((props, ref) => {
@@ -10,7 +10,9 @@ const Filecomp = React.forwardRef((props, ref) => {
   }
 
   useEffect(() => {
+    canvasPos();
   }, []);
+
   return (
     <>
       <div className={props.modalToggle}>

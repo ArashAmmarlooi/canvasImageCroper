@@ -7,7 +7,7 @@ let imgWidth, imgHeight; //Set the weight and height of the image
 let currentDegrees = 0; // initialize first value of degress for the canvas rotation
 let x, y; // x and y postion of image in canvas
 let sx, sy, sw, sh; // Canvas source destination and widh and hieght
-let canvas; // Canvas it
+let canvas; // Canvas it self
 let file; // image file that get from ffile input
 let string; // String variable for keeping image 64bit data and reload it for scenario 2
 
@@ -108,15 +108,22 @@ function sliderZoom(slider) {
   });
 }
 
+// Function for moving canvas around with mouse movement to position x , y
+function canvasPos() {
+document.addEventListener('mousemove', (e) =>{
+console.log(e, 'e mouse move')
+})
+}
 // Function wich particulary for getting image data and extract it as jsonObject
 function imageData(e) {
   e.preventDefault();
-  // when sumbit button cliked image data has sent to jsonObject
+  // Get image data if necessary 
   imgData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
   // a data URL of the current canvas image
   const canvasContents = canvas.toDataURL();
-  // save image data and canavas scales to strinf for scenario 2
+  // save image data and canavas scales and date to string for scenario 2
   const data = { image: canvasContents, date: Date.now() };
+  // 64 bit string which holds image data
   string = data.image;
 
   //json object that keep image data
@@ -138,20 +145,20 @@ function imageData(e) {
 }
 
 // Function for scenario 2 , in order to review theimage that we load it earlier
-function importFromJson(canvas) {
+function importFromJson(canvasSec) {
   let image = new Image();
   image.src = string;
 
   image.onload = function () {
-    let context = canvas.getContext("2d"); // Set Canvas ctx to ctx variable
+    let context = canvasSec.getContext("2d"); // Set Canvas ctx to ctx variable
     const aspectRatio = imgWidth / imgHeight;
-    canvas.width = 380;
-    canvas.height = canvas.width / aspectRatio;
+    canvasSec.width = 380;
+    canvasSec.height = canvasSec.width / aspectRatio;
 
-    canvasWidth = canvas.width;
-    canvasHeight = canvas.height;
+    canvasWidth = canvasSec.width;
+    canvasHeight = canvasSec.height;
     context.drawImage(image, x, y); // destination size
   };
 }
 
-export { filePrint, sliderZoom, imageData, importFromJson };
+export { filePrint, sliderZoom, imageData, importFromJson, canvasPos };

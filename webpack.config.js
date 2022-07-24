@@ -17,12 +17,14 @@ module.exports = {
   devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: devMode ? "bundle.js" : "bundle.[contenthash].js", // if is devMode just bundle if not hash bundle
+    // if is devMode just bundle if not hash bundle
+    filename: devMode ? "bundle.js" : "bundle.[contenthash].js", 
   },
   devServer: {
     stats: { colors: true },
     hot: true,
-    historyApiFallback: true, // Handle history api when routes changed . 
+    // Handle history api when routes changed . 
+    historyApiFallback: true, 
     open: true,
     port: 8090,
     contentBase: path.join(__dirname, "src"),
@@ -52,9 +54,10 @@ module.exports = {
             ],
           },
       {
-        test: /\.(sa|sc|c)ss$/, // For handling sass files 
+        test: /\.(sa|sc|c)ss$/, // For handling sass and css  files 
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader, // If dev mode style-loder will be in charge if not MiniCssExtarct
+          // If dev mode style-loder will be in charge if not MiniCssExtarct will be .
+          devMode ? "style-loader" : MiniCssExtractPlugin.loader, 
           {
             loader: "css-loader",
             options: {
@@ -62,11 +65,13 @@ module.exports = {
               modules: true,
               sourceMap: true,
               modules: {
-                localIdentName: "[local]-[hash:base64:5]", // Make local hash classes in css budnle bundle 
+                // Make local hash classes in css budnle bundle 
+                localIdentName: "[local]-[hash:base64:5]", 
               },
             },
           },
-          // "postcss-loader", // if we wantd use post css options and make application reliable for the browsers . 
+          // if we wantd use post css options and make application reliable for the browsers . 
+          // "postcss-loader", 
           "sass-loader",
         ],
       },

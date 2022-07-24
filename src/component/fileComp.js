@@ -25,13 +25,11 @@ const Filecomp = ({ fileSelector, editorCanvas }) => {
     fileSelector = document.getElementById("fileSelector");
     let cropCont = document.getElementById("CropContainer")
     let cropArea = document.getElementById("cropArea")
-
     filePrint(fileSelector, childRef.current, setModal, cropCont, cropArea);
   }, [fileSelector, childRef]);
 
   useEffect(() => {
     let zoomSlide = document.getElementById("zoom-slider");
-    let rotateSlide = document.getElementById("rotate-slider");
     sliderZoom(zoomSlide);
   }, [isModal]);
 
