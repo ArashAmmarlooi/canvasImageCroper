@@ -84,6 +84,13 @@ function filePrint(fileSelector, editorCanvas, callback, cropCont, cropArea) {
   };
 }
 
+// Function which change the postion of x valueof the image in the canvas
+function changePos(count) {
+  x += count;
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  ctx.drawImage(img, x, y, canvasWidth, canvasHeight); // destination size
+}
+
 //Function for get value of slider and change the cnvas scale
 function sliderZoom(slider) {
   slider.value = 0;
@@ -97,27 +104,33 @@ function sliderZoom(slider) {
     const scale = e.target.value;
     console.log(scale, "scale");
     ctx.scale(scale, scale);
-    ctx.drawImage(
-      img,
-      0,
-      0,
-      canvasWidth,
-      canvasHeight // source size
-    ); // destination size
+    ctx.drawImage(img, x, y, canvasWidth, canvasHeight); // destination size
     ctx.scale(1 / scale, 1 / scale);
   });
 }
 
-// Function for moving canvas around with mouse movement to position x , y
-function canvasPos() {
-document.addEventListener('mousemove', (e) =>{
-console.log(e, 'e mouse move')
-})
-}
+// function getMousePos(canvasF, evt) {
+//   var rect = canvasF.getBoundingClientRect();
+//   return {
+//     x: evt.clientX - rect.left,
+//     y: evt.clientY - rect.top
+//   };
+// }
+
+// // Function for moving canvas around with mouse movement to position x , y
+// function canvasPos(canvasFirst) {
+//   canvasFirst.addEventListener('mous', (e)  => {
+//     alert('mouse dow')
+//     var mousePos = getMousePos(canvasFirst, e);
+//     var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+//     console.log(canvasFirst, message);
+//   }, false);
+// }
+
 // Function wich particulary for getting image data and extract it as jsonObject
 function imageData(e) {
   e.preventDefault();
-  // Get image data if necessary 
+  // Get image data if necessary
   imgData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
   // a data URL of the current canvas image
   const canvasContents = canvas.toDataURL();
@@ -161,4 +174,4 @@ function importFromJson(canvasSec) {
   };
 }
 
-export { filePrint, sliderZoom, imageData, importFromJson, canvasPos };
+export { filePrint, sliderZoom, imageData, importFromJson, changePos };
